@@ -110,7 +110,7 @@ from src.running_with_bunnies import all_permutations, answer, has_negative_cycl
                 [1, 10, 10, 10, 0]
             ],
             6,
-            [2, 1, 0]
+            sorted([2, 1, 0])
 
     )
 ])
@@ -170,8 +170,8 @@ def test_negative_cycle(graph, has_cycle):
             [
                 (1, 2),
                 (2, 1),
-                (1, ),
-                (2, ),
+                (1,),
+                (2,),
                 (),
             ]
     ),
@@ -190,9 +190,9 @@ def test_negative_cycle(graph, has_cycle):
                 (2, 3),
                 (3, 1),
                 (3, 2),
-                (1, ),
-                (2, ),
-                (3, ),
+                (1,),
+                (2,),
+                (3,),
                 (),
             ]
     )

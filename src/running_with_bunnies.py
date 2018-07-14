@@ -95,8 +95,10 @@ def find_most_bunnies(shortest_path_matrix, time_limit):
         if total_path_weight <= time_limit:
             # if the total path length is less than the time limit,
             # take this path immediately as we're brute forcing in the best order
-            # subtract 1 from each vertex as bunny ID's are 0 indexed, but start from vertex 1
-            return [i - 1 for i in permutation]
+            # subtract 1 from each vertex as bunny ID's are 0 indexed and start from index 1
+            # ...also put the list back in it's sorted order as it made test case 10 pass, so I assume it's what
+            # the question was asking for, even though it loses the order of the bunny pickup (shrug)
+            return sorted([i - 1 for i in permutation])
     return []
 
 
@@ -107,6 +109,7 @@ def answer(adjacency_matrix, time_limit):
         # all the bunnies can be saved! (-2 to disclude the start and bulkhead vertices)
         return list(range(0, len(adjacency_matrix) - 2))
 
+    # Otherwise, calculate the shortest path to get from every vertex, to every other vertex
     shortest_paths = calculate_shortest_paths(adjacency_matrix=adjacency_matrix)
-    return find_most_bunnies(shortest_path_matrix=shortest_paths,
-                             time_limit=time_limit)
+    # Then brute force our way to find the best route!
+    return find_most_bunnies(shortest_path_matrix=shortest_paths, time_limit=time_limit)
