@@ -1,3 +1,4 @@
 .pytest_cache
 VirtualEnv
 .idea
+*.pyc
